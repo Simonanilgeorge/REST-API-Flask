@@ -1,0 +1,24 @@
+GET http://127.0.0.1:5000/items
+###
+
+POST http://localhost:5000/item/z
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTAzNDYxNTUsImlhdCI6MTYxMDM0NTg1NSwibmJmIjoxNjEwMzQ1ODU1LCJpZGVudGl0eSI6MX0.BOAOr2J0AuvzwJWrRBp_6Z7vq3vxfrVqZBhm2QoR8E4
+Content-Type: application/json
+# body:
+
+{
+    "price":12.99
+}
+
+
+###
+GET http://127.0.0.1:5000/item/h
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTAzNDYxNTUsImlhdCI6MTYxMDM0NTg1NSwibmJmIjoxNjEwMzQ1ODU1LCJpZGVudGl0eSI6MX0.BOAOr2J0AuvzwJWrRBp_6Z7vq3vxfrVqZBhm2QoR8E4
+###
+POST http://127.0.0.1:5000/auth
+Content-Type: application/json
+
+{
+    "username":"bob",
+    "password":"asdf"
+}
