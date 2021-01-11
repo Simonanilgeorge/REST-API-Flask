@@ -12,29 +12,28 @@ items=[{
 },
 {"name":"b"}]
 
-itemNameMapping={i['name']:i for i in items}
-print(itemNameMapping)
+
+
 class Item(Resource):
     @jwt_required()
     def get(self,name):
-
-        item=itemNameMapping.get(name,None)
+        item=next(filter(lambda x:x['name']==name,items),None)
         if item:
-        
-            return {"name":name},200
-        return {"message":"item with this name does not exist in the database"}
+            return {"item":item}
+        return {"message":"item does not exist"}
+
+
     @jwt_required()
     def post(self,name):
         data=request.get_json()
-        item=itemNameMapping.get(name,None)
-        if item:
-            return {"message":"item with this name already exists in the database"}
+        if next(filter(lambda x:x['name']==name,items),None):
+            return {"message":"an item with this name already exists"}
         item={
             "name":name,
             "price":data["price"]
         }
         items.append(item)
-        itemNameMapping[name]=item
+       
         return {"items":items},201
 
 class ItemList(Resource):
