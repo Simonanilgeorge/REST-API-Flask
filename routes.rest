@@ -1,7 +1,7 @@
 GET http://127.0.0.1:5000/items
 ###
 
-POST http://localhost:5000/item/d
+POST http://localhost:5000/item/b
 Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTAzNTA2NzIsImlhdCI6MTYxMDM1MDM3MiwibmJmIjoxNjEwMzUwMzcyLCJpZGVudGl0eSI6MX0.Y10Ml0-EK-UwX5A9LvsZ6PdEuizoRHxe7PIbhfm7e4Q
 Content-Type: application/json
 # body:
@@ -25,3 +25,12 @@ Content-Type: application/json
 
 ###
 DELETE http://127.0.0.1:5000/item/b
+
+### 
+PUT http://127.0.0.1:5000/item/c
+Content-Type: application/json
+
+{
+    "price":100
+   
+}
