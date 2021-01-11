@@ -4,7 +4,7 @@ from flask_jwt import JWT,jwt_required
 from security import authenticate,identity
 
 app=Flask(__name__)
-app.secret_key="ceejay"
+app.secret_key="ceejay" 
 api=Api(app)
 jwt=JWT(app,authenticate,identity)
 items=[]
@@ -39,7 +39,12 @@ class Item(Resource):
         return {"message":"item {} deleted".format(name)}
 
     def put(self,name):
-        data=request.get_json()
+        parser=reqparse.RequestParser()
+        parser.add_argument('price',
+        type=float,
+        required=True,
+        help="This field cannot be left blank")
+        data=parser.parse_args()
         item=next(filter(lambda x:x['name']==name,items),None)
         if item is None:
             item={"name":name,"price":data["price"]}
