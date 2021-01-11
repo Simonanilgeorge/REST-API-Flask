@@ -22,3 +22,6 @@ Content-Type: application/json
     "username":"bob",
     "password":"asdf"
 }
+
+###
+DELETE http://127.0.0.1:5000/item/b
