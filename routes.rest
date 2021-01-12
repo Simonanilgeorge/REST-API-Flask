@@ -1,8 +1,8 @@
 GET http://127.0.0.1:5000/items
 ###
 
-POST http://localhost:5000/item/c
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTAzNTA2NzIsImlhdCI6MTYxMDM1MDM3MiwibmJmIjoxNjEwMzUwMzcyLCJpZGVudGl0eSI6MX0.Y10Ml0-EK-UwX5A9LvsZ6PdEuizoRHxe7PIbhfm7e4Q
+POST http://localhost:5000/item/d
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA0NDI2MDEsImlhdCI6MTYxMDQ0MjMwMSwibmJmIjoxNjEwNDQyMzAxLCJpZGVudGl0eSI6MX0.QmS20sq-ovAzQVKQnkwLLU8Zy41FeX6vd7nG0QL2s9U
 Content-Type: application/json
 # body:
 
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:5000/item/d
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTAzNTA2NzIsImlhdCI6MTYxMDM1MDM3MiwibmJmIjoxNjEwMzUwMzcyLCJpZGVudGl0eSI6MX0.Y10Ml0-EK-UwX5A9LvsZ6PdEuizoRHxe7PIbhfm7e4Q
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA0NDI2MDEsImlhdCI6MTYxMDQ0MjMwMSwibmJmIjoxNjEwNDQyMzAxLCJpZGVudGl0eSI6MX0.QmS20sq-ovAzQVKQnkwLLU8Zy41FeX6vd7nG0QL2s9U
 ###
 POST http://127.0.0.1:5000/auth
 Content-Type: application/json
