@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:5000/item/d
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA0NDI2MDEsImlhdCI6MTYxMDQ0MjMwMSwibmJmIjoxNjEwNDQyMzAxLCJpZGVudGl0eSI6MX0.QmS20sq-ovAzQVKQnkwLLU8Zy41FeX6vd7nG0QL2s9U
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA0NDQwOTQsImlhdCI6MTYxMDQ0Mzc5NCwibmJmIjoxNjEwNDQzNzk0LCJpZGVudGl0eSI6MX0.6O6jnrJR9Ouuf4rD3CDU6954dSScWFI4YMRLLCWxtKU
 ###
 POST http://127.0.0.1:5000/auth
 Content-Type: application/json
@@ -34,4 +34,12 @@ Content-Type: application/json
     
     "price":720
    
+}
+###
+POST http://127.0.0.1:5000/register
+Content-Type: application/json
+
+{
+    "username":"bob",
+    "password":"asdf"
 }
