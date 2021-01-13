@@ -13,49 +13,61 @@ class Item(Resource):
     
     @jwt_required()
     def get(self,name):
+        item=self.findByName(name)
+        if item:
+            return item
+        else:
+            return {"message":"Item not found"},404
+
+
+
+    @classmethod
+    def findByName(cls,name):
         connection=sqlite3.connect('data.db')
         cursor=connection.cursor()
         query="SELECT * FROM items WHERE name=?"
         result=cursor.execute(query,(name,))
         row=result.fetchone()
         connection.close()
-
         if row:
             return {"item":{"name":row[0],"price":row[1]}}
-        return {"message":"item does not exist"},404
+        
 
 
-    # @jwt_required()
+
+
     def post(self,name):
         
-        if next(filter(lambda x:x['name']==name,items),None):
-            return {"message":"an item with this name already exists"}
-        data=Item.parser.parse_args()
-        item={
-            "name":name,
-            "price":data["price"]
-        }
-        items.append(item)
+        if self.findByName(name):
+            return {"message":"An item with name: {} already exists".format(name)}
        
-        return {"items":items},201
+        data=Item.parser.parse_args()       
+        item={"name":name,"price":data["price"]}
+        connection=sqlite3.connect('data.db')
+        cursor=connection.cursor()
+        query="INSERT INTO items VALUES(?,?)"
+        cursor.execute(query,(item['name'],item['price']))
+        connection.commit()
+        connection.close()
+        return {"message":"Item {} added".format(item.get("name"))},201
     
     def delete(self,name):
         global items
         items=list(filter(lambda x:x['name']!=name,items))
         return {"message":"item {} deleted".format(name)}
 
-    def put(self,name):
+#     def put(self,name):
 
-        data=Item.parser.parse_args()
-        item=next(filter(lambda x:x['name']==name,items),None)
-        if item is None:
-            item={"name":name,"price":data["price"]}
-            items.append(item)
-        else:
-            item.update(data)
-        return item
+#         data=Item.parser.parse_args()
+#         item=next(filter(lambda x:x['name']==name,items),None)
+#         if item is None:
+#             item={"name":name,"price":data["price"]}
+#             items.append(item)
+#         else:
+#             item.update(data)
+#         return item
         
 
 class ItemList(Resource):
     def get(self):
-        return {"items":items}
+        return {"items":"items"}
