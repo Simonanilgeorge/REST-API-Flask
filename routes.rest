@@ -2,7 +2,7 @@ GET http://127.0.0.1:5000/items
 ###
 
 POST http://localhost:5000/item/a
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA2OTgwMzIsImlhdCI6MTYxMDY5NzczMiwibmJmIjoxNjEwNjk3NzMyLCJpZGVudGl0eSI6MX0.nWYqPlKs8B2K2hd5AJiNZAgKJfEIy2KhOABgZ49oNrM
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA2OTk4NjgsImlhdCI6MTYxMDY5OTU2OCwibmJmIjoxNjEwNjk5NTY4LCJpZGVudGl0eSI6MX0.OCg5P0NbJ1M-95M-uI0naIhbxpdLlsjTxcYk3Id5TPk
 Content-Type: application/json
 # body:
 
@@ -13,17 +13,9 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:5000/item/a
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA2OTgwMzIsImlhdCI6MTYxMDY5NzczMiwibmJmIjoxNjEwNjk3NzMyLCJpZGVudGl0eSI6MX0.nWYqPlKs8B2K2hd5AJiNZAgKJfEIy2KhOABgZ49oNrM
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA2OTk4NjgsImlhdCI6MTYxMDY5OTU2OCwibmJmIjoxNjEwNjk5NTY4LCJpZGVudGl0eSI6MX0.OCg5P0NbJ1M-95M-uI0naIhbxpdLlsjTxcYk3Id5TPk
 ###
-POST http://127.0.0.1:5000/auth
-Content-Type: application/json
 
-{
-    "username":"bob",
-    "password":"asdf"
-}
-
-###
 DELETE http://127.0.0.1:5000/item/f
 
 ### 
@@ -35,6 +27,17 @@ Content-Type: application/json
     "price":720
    
 }
+###
+
+
+POST http://127.0.0.1:5000/auth
+Content-Type: application/json
+
+{
+    "username":"bob",
+    "password":"asdf"
+}
+
 ###
 POST http://127.0.0.1:5000/register
 Content-Type: application/json

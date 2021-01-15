@@ -12,15 +12,25 @@ class Item(Resource):
     
     @jwt_required()
     def get(self,name):
-        item=self.findByName(name)
+        try:
+            item=self.findByName(name)
+        except:
+            return {"message":"An error occured"}
         if item:
             return item
         else:
             return {"message":"Item not found"},404
 
 
-    # @classmethod
-    # def insert(cls,name):
+    @classmethod
+    def insert(cls,item):
+        connection=sqlite3.connect('data.db')
+        cursor=connection.cursor()
+        query="INSERT INTO items VALUES(?,?)"
+        cursor.execute(query,(item['name'],item['price']))
+        connection.commit()
+        connection.close()
+
 
 
     @classmethod
@@ -45,12 +55,11 @@ class Item(Resource):
        
         data=Item.parser.parse_args()       
         item={"name":name,"price":data["price"]}
-        connection=sqlite3.connect('data.db')
-        cursor=connection.cursor()
-        query="INSERT INTO items VALUES(?,?)"
-        cursor.execute(query,(item['name'],item['price']))
-        connection.commit()
-        connection.close()
+
+        try:
+            self.insert(item)
+        except:
+            return {"message":"an error occured"},500
         return {"message":"Item {} added".format(item.get("name"))},201
     
     def delete(self,name):
