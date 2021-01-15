@@ -2,7 +2,6 @@ from flask_restful import Resource,reqparse
 from flask_jwt import jwt_required
 import sqlite3
 
-
 class Item(Resource):
 
     parser=reqparse.RequestParser()
@@ -19,6 +18,9 @@ class Item(Resource):
         else:
             return {"message":"Item not found"},404
 
+
+    # @classmethod
+    # def insert(cls,name):
 
 
     @classmethod
@@ -52,8 +54,17 @@ class Item(Resource):
         return {"message":"Item {} added".format(item.get("name"))},201
     
     def delete(self,name):
-        global items
-        items=list(filter(lambda x:x['name']!=name,items))
+        
+        if self.findByName(name) is None:
+            return {"message":"Item does not exist"}
+
+        connection=sqlite3.connect('data.db')
+        cursor=connection.cursor()
+        query="DELETE FROM items WHERE name=?"
+        cursor.execute(query,(name,))
+        connection.commit()
+        connection.close()
+
         return {"message":"item {} deleted".format(name)}
 
 #     def put(self,name):
