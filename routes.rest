@@ -1,8 +1,8 @@
 GET http://127.0.0.1:5000/items
 ###
 
-POST http://localhost:5000/item/a
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA3OTA3MzEsImlhdCI6MTYxMDc5MDQzMSwibmJmIjoxNjEwNzkwNDMxLCJpZGVudGl0eSI6MX0.9hVrYUja4yFdtZPWNFDSpq9f6jXbp8Cw1t9uRZgp-dQ
+POST http://localhost:5000/item/j
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA4ODY5MjYsImlhdCI6MTYxMDg4NjYyNiwibmJmIjoxNjEwODg2NjI2LCJpZGVudGl0eSI6MX0.cB51yd-kgldlPJpaVlrAJbtuKV18OZHnXBfjd80IUUg
 Content-Type: application/json
 # body:
 
@@ -13,13 +13,13 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:5000/item/a
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA3OTA3MzEsImlhdCI6MTYxMDc5MDQzMSwibmJmIjoxNjEwNzkwNDMxLCJpZGVudGl0eSI6MX0.9hVrYUja4yFdtZPWNFDSpq9f6jXbp8Cw1t9uRZgp-dQ
+Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA4ODY5MjYsImlhdCI6MTYxMDg4NjYyNiwibmJmIjoxNjEwODg2NjI2LCJpZGVudGl0eSI6MX0.cB51yd-kgldlPJpaVlrAJbtuKV18OZHnXBfjd80IUUg
 ###
 
-DELETE http://127.0.0.1:5000/item/a
+DELETE http://127.0.0.1:5000/item/e
 
 ### 
-PUT http://127.0.0.1:5000/item/a
+PUT http://127.0.0.1:5000/item/j
 Content-Type: application/json
 
 {
