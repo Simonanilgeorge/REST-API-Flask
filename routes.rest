@@ -1,8 +1,12 @@
-GET http://127.0.0.1:5000/items
+
+@url=http://127.0.0.1:5000
+@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA5NjAxODIsImlhdCI6MTYxMDk1OTg4MiwibmJmIjoxNjEwOTU5ODgyLCJpZGVudGl0eSI6MX0.F099zbr5OJr8hAGSkO6AOTqaLbuw4lxj27GX_5NqhLY
+###
+GET {{url}}/items
 ###
 
-POST http://localhost:5000/item/j
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA4ODY5MjYsImlhdCI6MTYxMDg4NjYyNiwibmJmIjoxNjEwODg2NjI2LCJpZGVudGl0eSI6MX0.cB51yd-kgldlPJpaVlrAJbtuKV18OZHnXBfjd80IUUg
+POST http://localhost:5000/item/a
+Authorization:JWT {{token}}
 Content-Type: application/json
 # body:
 
@@ -13,13 +17,13 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:5000/item/a
-Authorization:JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA4ODY5MjYsImlhdCI6MTYxMDg4NjYyNiwibmJmIjoxNjEwODg2NjI2LCJpZGVudGl0eSI6MX0.cB51yd-kgldlPJpaVlrAJbtuKV18OZHnXBfjd80IUUg
+Authorization:JWT {{token}}
 ###
 
-DELETE http://127.0.0.1:5000/item/e
+DELETE http://127.0.0.1:5000/item/a
 
 ### 
-PUT http://127.0.0.1:5000/item/j
+PUT http://127.0.0.1:5000/item/c
 Content-Type: application/json
 
 {

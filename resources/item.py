@@ -41,7 +41,7 @@ class Item(Resource):
     
     def delete(self,name):
         
-        if self.findByName(name) is None:
+        if ItemModel.findByName(name) is None:
             return {"message":"Item does not exist"}
 
         connection=sqlite3.connect('data.db')
