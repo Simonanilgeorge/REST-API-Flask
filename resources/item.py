@@ -1,7 +1,7 @@
 from flask_restful import Resource,reqparse
 from flask_jwt import jwt_required
 from models.item import ItemModel
-import sqlite3
+
 
 class Item(Resource):
 
@@ -74,21 +74,6 @@ class ItemList(Resource):
 
 
     def get(self):
-        items=self.allItems()
-        return {"items":items}
-
-    @classmethod
-    def allItems(cls):
-        connection=sqlite3.connect('data.db')
-        cursor=connection.cursor()
-        query="SELECT * FROM items"
-        result=cursor.execute(query)
-        items=[]
-        
-        
-        for row in result:
-            print(f"name: {row[0]} price: {row[1]}")
-            items.append({"name":row[0],"price":row[1]})
-        
-        connection.close()
-        return items
+        return {"items":[item.json() for item in ItemModel.query.all()]}
+        # alternate method to return all items
+        # return {"items":list(map(lambda x:x.json,ItemModel.query.all()))}
