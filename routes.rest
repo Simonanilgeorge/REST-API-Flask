@@ -5,7 +5,7 @@
 GET {{url}}/items
 ###
 
-POST http://localhost:5000/item/d
+POST http://localhost:5000/item/c 
 Authorization:JWT {{token}}
 Content-Type: application/json
 # body:
