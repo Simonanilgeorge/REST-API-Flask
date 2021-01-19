@@ -34,45 +34,35 @@ class Item(Resource):
         print(item)
 
         try:
-            item.insert()
+            item.saveToDb()
         except:
             return {"message":"an error occured"},500
         return {"message":"Item {} added".format(item.name)},201
     
     def delete(self,name):
-        
-        if ItemModel.findByName(name) is None:
+        item=ItemModel.findByName(name)
+        if item:
+            item.deleteFromDb()
+            return {"message":"Item deleted"}
+        else:
             return {"message":"Item does not exist"}
-
-        connection=sqlite3.connect('data.db')
-        cursor=connection.cursor()
-        query="DELETE FROM items WHERE name=?"
-        cursor.execute(query,(name,))
-        connection.commit()
-        connection.close()
-
-        return {"message":"item {} deleted".format(name)}
 
     def put(self,name):
 
         data=Item.parser.parse_args()
         
         item=ItemModel.findByName(name)
-        updatedItem=ItemModel(name,data["price"])
+        
 
 
 
         if item is None:
-            try:
-                updatedItem.insert()
-            except:
-                {"message":"An error occured when updating the item"},500
+            item=ItemModel(name,data["price"])
         else:
-            try:
-                updatedItem.update()
-            except:
-                {"message":"An error occured when updating the item"},500
-        return updatedItem.json()
+            item.price=data["price"]
+
+        item.saveToDb()
+        return item.json()
 
 
   
