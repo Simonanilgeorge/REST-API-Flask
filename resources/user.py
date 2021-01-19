@@ -1,50 +1,7 @@
 import sqlite3
 from flask_restful import Resource,reqparse
+from models.user import UserModel
 
-class User():
-
-    def __init__(self,_id,username,password):
-        self.id=_id
-        self.username=username
-        self.password=password
-    
-    @classmethod
-    def findByUsername(cls,username):
-        connection=sqlite3.connect('data.db')
-        cursor=connection.cursor()
-        query="SELECT * FROM users WHERE username=?"
-        # parameter passed must be in the form of a tuple
-        result=cursor.execute(query,(username,))
-        row=result.fetchone()
-        if row:
-            user=cls(*row)
-        else:
-            user=None
-
-        connection.close()
-        return user
-
-    @classmethod
-    def findById(cls,_id):
-        connection=sqlite3.connect('data.db')
-        cursor=connection.cursor()
-        query="SELECT * FROM users WHERE id=?"
-        # parameter passed must be in the form of a tuple
-        result=cursor.execute(query,(_id,))
-        row=result.fetchone()
-        if row:
-            user=cls(*row)
-        else:
-            user=None
-
-        connection.close()
-        return user
-
-    
-    def __str__(self):
-        return f"username: {self.username} id:{self.id}"
-    def __repr__(self):
-        return f"username:{self.username} id:{self.id}"
 
 class UserRegister(Resource):
     parser=reqparse.RequestParser()
@@ -61,16 +18,14 @@ class UserRegister(Resource):
     def post(self):
 
         data=UserRegister.parser.parse_args()
-        user=User.findByUsername(data['username'])
+        user=UserModel.findByUsername(data['username'])
         if user:
             return {"message":"A user with that username already exists "},400
         print(f"New user info send from the client is {data}")
 
-        connection=sqlite3.connect('data.db')
-        cursor=connection.cursor()
-        query="INSERT INTO users VALUES(null,?,?)"
-        cursor.execute(query,(data['username'],data['password']))
-        connection.commit()
-        connection.close()
+        user=UserModel(data["username"],data["password"])
+        # alternate method to execute the above line
+        # user=UserModel(**data)
+        user.saveToDb()
 
-        return {"message":"user created successfully"},201
+        return {"message":"user added successfully"},201

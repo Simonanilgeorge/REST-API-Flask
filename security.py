@@ -1,15 +1,15 @@
-from resources.user import User
+from models.user import UserModel
 
 
 
 
 def authenticate(username,password):
-    user=User.findByUsername(username)
+    user=UserModel.findByUsername(username)
     return user
 def identity(payload):
     
     userId=payload['identity']
-    user=User.findById(userId)
+    user=UserModel.findById(userId)
 
     return user
 

@@ -1,6 +1,6 @@
 
 @url=http://127.0.0.1:5000
-@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTA5NzQ0MDMsImlhdCI6MTYxMDk3NDEwMywibmJmIjoxNjEwOTc0MTAzLCJpZGVudGl0eSI6MX0.LMLjVmGCMBeb2zdPLgAMlMCNhxMWcfFEpJqbBB6Youg
+@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTEwMzc3NDgsImlhdCI6MTYxMTAzNzQ0OCwibmJmIjoxNjExMDM3NDQ4LCJpZGVudGl0eSI6MX0.9_6CWXNeVAJ9RXIiJPJ2GmvezYeEnpmks3p1OUdS40o
 ###
 GET {{url}}/items
 ###
@@ -16,11 +16,11 @@ Content-Type: application/json
 
 
 ###
-GET http://127.0.0.1:5000/item/c
+GET http://127.0.0.1:5000/item/d
 Authorization:JWT {{token}}
 ###
 
-DELETE http://127.0.0.1:5000/item/b
+DELETE http://127.0.0.1:5000/item/d
 
 ### 
 PUT http://127.0.0.1:5000/item/d
