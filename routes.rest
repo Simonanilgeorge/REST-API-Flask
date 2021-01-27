@@ -1,11 +1,11 @@
 
 @url=http://127.0.0.1:5000
-@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTEwMzc3NDgsImlhdCI6MTYxMTAzNzQ0OCwibmJmIjoxNjExMDM3NDQ4LCJpZGVudGl0eSI6MX0.9_6CWXNeVAJ9RXIiJPJ2GmvezYeEnpmks3p1OUdS40o
+@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTE3MzIwMDMsImlhdCI6MTYxMTczMTcwMywibmJmIjoxNjExNzMxNzAzLCJpZGVudGl0eSI6MX0.9ZmekqWEX4AQw9_FmvXsWbvnR4inqz402N1VXB6gVy8
 ###
 GET {{url}}/items
 ###
 
-POST http://localhost:5000/item/c 
+POST http://localhost:5000/item/a
 Authorization:JWT {{token}}
 Content-Type: application/json
 # body:
@@ -23,7 +23,7 @@ Authorization:JWT {{token}}
 DELETE http://127.0.0.1:5000/item/d
 
 ### 
-PUT http://127.0.0.1:5000/item/d
+PUT http://127.0.0.1:5000/item/a
 Content-Type: application/json
 
 {
